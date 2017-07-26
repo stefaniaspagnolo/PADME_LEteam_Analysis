@@ -87,8 +87,10 @@ public :
    int            fNEvFingerPass;
    int            fNEvTimePass;
    int            NBremmEvT;
-   int           	NBremmEv;
+   int            NBremmEv;
    int            NPassBremm;
+
+   int            fAprimeMass;
 
 
    Double_t       photonE;
@@ -97,7 +99,6 @@ public :
    Double_t       Emax;
    Double_t       thethamax;
    Double_t       thethamin;
-   int            AprimeMass;
    double         Rmin;
    double         Rmax;
    ofstream       out1;
@@ -277,6 +278,7 @@ public :
    virtual void    Terminate();
 
    void            PrintCounters();
+   void 	   setUbosonMass(double mass){fAprimeMass = mass;}	
 
 
    ClassDef(UBTF_SelectorAnalysis,0);

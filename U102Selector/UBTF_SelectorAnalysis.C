@@ -44,7 +44,7 @@ void UBTF_SelectorAnalysis::Begin(TTree * /*tree*/)
 	Rmin=(2.5+2)*2.1;
 	thethamax=atan(Rmax/300);
 	thethamin=atan(Rmin/300);
-	AprimeMass=10.;//MeV
+	fAprimeMass=10.;//MeV
 	fECALthresholdE = 50.;//MeV
 
 	save=false;
@@ -370,13 +370,13 @@ Bool_t UBTF_SelectorAnalysis::Process(Long64_t entry)
 
 
 
-	Emin = EvsAngle(thethamax, AprimeMass);
-	Emax = EvsAngle(thethamin, AprimeMass);
+	Emin = EvsAngle(thethamax, fAprimeMass);
+	Emax = EvsAngle(thethamin, fAprimeMass);
 	//cout << "energia:   minima    "<< Emin<< "    massima:      "<<Emax<< endl;
 	if (photonE<Emin || photonE>Emax)
 	{
 		SaveTrainingData(M2Cluster[iCL], ECluster[iCL], XCluster[iCL],  YCluster[iCL], 0);
-		if (debug1 || debug0) cout<<"---- this event has ECAL cluster energy = "<<photonE<<" out of range ("<<Emin<<","<<Emax<<") for M_Uboson="<<AprimeMass<<"; skipping"<<endl;
+		if (debug1 || debug0) cout<<"---- this event has ECAL cluster energy = "<<photonE<<" out of range ("<<Emin<<","<<Emax<<") for M_Uboson="<<fAprimeMass<<"; skipping"<<endl;
 		return kTRUE;
 	}
 	energyCut->Fill(M2Cluster[iCL]);
